@@ -1,0 +1,178 @@
+syntax = "proto3";
+
+package data;
+
+option go_package = "./pkg/pb";
+
+service DataService {
+    rpc GetEmployees(GetEmployeesRequest) returns (GetEmployeesResponse);
+    rpc GetEmployee(GetEmployeeRequest) returns (GetEmployeeResponse);
+    rpc CreateEmployee(CreateEmployeeRequest) returns (CreateEmployeeResponse);
+    rpc UpdateEmployee(UpdateEmployeeRequest) returns (UpdateEmployeeResponse);
+    rpc DeleteEmployee(DeleteEmployeeRequest) returns (DeleteEmployeeResponse);
+    rpc GetPositions(GetPositionsRequest) returns (GetPositionsResponse);
+    rpc GetPosition(GetPositionRequest) returns (GetPositionResponse);
+    rpc GetPositionByTitle(GetPositionByTitleRequest) returns (GetPositionByTitleResponse);
+    rpc CreatePosition(CreatePositionRequest) returns (CreatePositionResponse);
+    rpc UpdatePosition(UpdatePositionRequest) returns (UpdatePositionResponse);
+    rpc DeletePosition(DeletePositionRequest) returns (DeletePositionResponse);
+    rpc GetDepartments(GetDepartmentsRequest) returns (GetDepartmentsResponse);
+    rpc GetDepartment(GetDepartmentRequest) returns (GetDepartmentResponse);
+    rpc CreateDepartment(CreateDepartmentRequest) returns (CreateDepartmentResponse);
+    rpc UpdateDepartment(UpdateDepartmentRequest) returns (UpdateDepartmentResponse);
+    rpc DeleteDepartment(DeleteDepartmentRequest) returns (DeleteDepartmentResponse);
+}
+
+message Employee {
+    string id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    string hireDate = 5;
+    float salary = 6;
+    Position position = 7;
+}
+
+message Position {
+    string id = 1;
+    string title = 2;
+    Department department = 3;
+}
+
+message Department {
+    string id = 1;
+    string name = 2;
+}
+
+message GetEmployeesRequest {}
+
+message GetEmployeesResponse {
+    repeated Employee employees = 1;
+}
+
+message GetEmployeeRequest {
+    string id = 1;
+}
+
+message GetEmployeeResponse {
+    Employee employee = 1;
+}
+
+message CreateEmployeeRequest {
+    string firstName = 1;
+    string lastName = 2;
+    string email = 3;
+    string hireDate = 4;
+    float salary = 5;
+    string positionId = 6;
+}
+
+message CreateEmployeeResponse {
+    Employee employee = 1;
+}
+
+message UpdateEmployeeRequest {
+    string id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    string hireDate = 5;
+    float salary = 6;
+    string positionId = 7;
+}
+
+message UpdateEmployeeResponse {
+    Employee employee = 1;
+}
+
+message DeleteEmployeeRequest {
+    string id = 1;
+}
+
+message DeleteEmployeeResponse {}
+
+message GetPositionsRequest {}
+
+message GetPositionsResponse {
+    repeated Position positions = 1;
+}
+
+message GetPositionRequest {
+    string id = 1;
+}
+
+message GetPositionResponse {
+    Position position = 1;
+}
+
+message GetPositionByTitleRequest {
+    string title = 1;
+}
+
+message GetPositionByTitleResponse {
+    Position position = 1;
+}
+
+message CreatePositionRequest {
+    string title = 1;
+    string departmentId = 2;
+}
+
+message CreatePositionResponse {
+    Position position = 1;
+}
+
+message UpdatePositionRequest {
+    string id = 1;
+    string title = 2;
+    string departmentId = 3;
+}
+
+message UpdatePositionResponse {
+    string id = 1;
+    Position position = 2;
+}
+
+message DeletePositionRequest {
+    string id = 1;
+}
+
+message DeletePositionResponse {}
+
+message GetDepartmentsRequest {}
+
+message GetDepartmentsResponse {
+    repeated Department departments = 1;
+}
+
+message GetDepartmentRequest {
+    string id = 1;
+}
+
+message GetDepartmentResponse {
+    Department department = 1;
+}
+
+message CreateDepartmentRequest {
+    string name = 1;
+}
+
+message CreateDepartmentResponse {
+    Department department = 1;
+}
+
+message UpdateDepartmentRequest {
+    string id = 1;
+    string name = 2;
+}
+
+message UpdateDepartmentResponse {
+    Department department = 1;
+}
+
+message DeleteDepartmentRequest {
+    string id = 1;
+}
+
+message DeleteDepartmentResponse {}
+
