@@ -11,7 +11,5 @@ func Init(DatabaseURL string) *gorm.DB {
 		panic(err)
 	}
 
-	// db.AutoMigrate(&models.Employee{}, &models.Department{}, &models.Position{})
-
 	return db
 }

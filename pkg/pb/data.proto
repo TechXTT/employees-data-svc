@@ -21,6 +21,7 @@ service DataService {
     rpc CreateDepartment(CreateDepartmentRequest) returns (CreateDepartmentResponse);
     rpc UpdateDepartment(UpdateDepartmentRequest) returns (UpdateDepartmentResponse);
     rpc DeleteDepartment(DeleteDepartmentRequest) returns (DeleteDepartmentResponse);
+    rpc Migrate(MigrateRequest) returns (MigrateResponse);
 }
 
 message Employee {
@@ -176,3 +177,6 @@ message DeleteDepartmentRequest {
 
 message DeleteDepartmentResponse {}
 
+message MigrateRequest {}
+
+message MigrateResponse {}

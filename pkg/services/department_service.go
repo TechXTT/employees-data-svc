@@ -94,3 +94,13 @@ func (s *departmentService) DeleteDepartment(ctx context.Context, req *pb.Delete
 	}
 	return &pb.DeleteDepartmentResponse{}, nil
 }
+
+func (s *departmentService) AutoMigrate() {
+	s.DB.AutoMigrate(&models.Department{})
+	s.DB.AutoMigrate(&models.DepartmentAudit{})
+	s.DB.AutoMigrate(&models.Position{})
+	s.DB.AutoMigrate(&models.PositionAudit{})
+	s.DB.AutoMigrate(&models.Employee{})
+	s.DB.AutoMigrate(&models.EmployeeAudit{})
+	s.DB.AutoMigrate(&models.EmployeeSalaryHistory{})
+}

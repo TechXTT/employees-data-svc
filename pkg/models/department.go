@@ -12,6 +12,13 @@ type Department struct {
 	Positions []Position `gorm:"foreignKey:DepartmentID" json:"-"`
 }
 
+type DepartmentAudit struct {
+	ID           uuid.UUID `gorm:"type:uuid;primary_key"`
+	Action       string    `gorm:"not null"`
+	DepartmentID uuid.UUID `gorm:"type:uuid;not null"`
+	Name         string    `gorm:"not null, unique"`
+}
+
 func (d *Department) BeforeCreate(tx *gorm.DB) (err error) {
 	uuid, err := uuid.NewV4()
 	if err != nil {
